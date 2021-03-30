@@ -1,1 +1,5 @@
-"""This is a test example"""
+"""
+Header:
+Group: Group 7
+Member name: Yiling Du, Maham Sohail, Kacie Ho, Victoria Ha 
+"""
