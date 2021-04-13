@@ -50,6 +50,7 @@ class Humanplayer:
         
         Side Effects: print a string that contains the input.
         """
+        
         # human_answer=input("Please enter the guessing word: ")
         # if answer correct then call point method() to know how much points get
         # dict={"Color": red, white, }
@@ -98,7 +99,6 @@ def generator():
     letter_string=string.ascii_letters #"abcd...z + ABCD... Z"
     answer_cate=random.choice(category_list)
     answer_letter=random.choice(letter_string)
-    #print(f"The category is {answer_cate}, and the first letter is {answer_letter}.")
     return (answer_cate, answer_letter)
 
 def timer(seconds):
@@ -115,7 +115,7 @@ def timer(seconds):
     # in the main function 
     #humantime= 30 - 22 = 18 
 
-def point(word): 
+def point(word, humanplayer, computerplayer): 
     """ Score the word. Longer words get more points. 
     Args:
         word(string)- one required parameter "word", the specific word
@@ -123,13 +123,20 @@ def point(word):
     Returns:
         point(integer)- The points player gains ranges from 2-15.
     """
-    #human_answer=input("Please enter the guessing word: ")
-    #computer_answer=input("Please enter the guessing word: ")
-    length=len(word)
-    for i in range(16): 
-        if i==length:
-            point=i
-    return point
+    human_answer = list(human_guesses) 
+    computer_anwser = list(computer_guesses) 
+    for word in human_answer: 
+        length=len(word)
+        for i in range(16): 
+            if i==length:
+                hpoint=i
+        return hpoint
+    for words in computer_answer:
+        length=len(word)
+        for i in range(16): 
+            if i==length:
+                cpoint=i
+        return cpoint
         
 def scorekeeping(point):
     """ 
@@ -138,9 +145,15 @@ def scorekeeping(point):
     Args: 
         point(integer)- The amount of points from each player from the point()system.
     
+    Returns:
+        string- prints out current score of each player 
+    
     Side Effects: Stores the points. 
     """
-# when humanplayer's answer == generator() method answer_cate then humanplayer get point    
+    humanscore = point(hpoint)
+    compscore = point(cpoint)
+    print(f"Current Human Score: {humanscore}")
+    print(f"Current Computer Score: {compscore}")
         
 def outcome(scorekeeping):
     """ prints the final winning statement by how many points.
@@ -148,11 +161,30 @@ def outcome(scorekeeping):
     Args: 
         scorekeeping(function)- Calling back the score keeping function. 
     
+    Returns:
+        string- which player won and by how much
+        
     Side Effects: Printing a statement to the console.
     """
+    p1 = scorekeeping(humanscore)
+    p2 = scorekeeping(compscore)
+    if p1 > p2:
+        return (f"Human Player won by {p1 - p2}!")
+    elif p1 < p2:
+        return (f"Computer Player won by {p2 - p1}!")
+    elif p1 == p2:
+        return (f"Computer Player and Human Player tied with {p1}!")
+    
 def main(): 
+    """Runs the entire game, by printing out category and letter topics, computer 
+    and human guesses, and checking if outputs were within time range.
+
+    Returns:
+        string: multiple sentences outputted for game results
+    """
+    print(f"The category: {generator[0]}  The letter: {generator[1]} ")
+
     t= timer(humanplayer)
-    t2=
     #somehow call the timer function 
     if t < 30 and t > 0:
         return (f"Human answers are: {human_guesses()}")
@@ -165,8 +197,3 @@ def main():
      
 if __name__ == "__main__": 
     #going to call main()
-
-    
-    
-
-        
