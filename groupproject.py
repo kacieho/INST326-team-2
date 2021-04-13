@@ -3,6 +3,23 @@ Group: Section0102 Group7
 Member name: Yiling Du, Maham Sohail, Kacie Ho, Victoria Ha 
 Topic: Scattergories
 """
+"""Module Docstring: 
+    This script creates a scategories game between a humanplayer and the computerplayer.
+    The script creates 2 classes for each player (human and computer) and intializes 
+    both players. For the HumanPlayer class there is an __init__ method, that initializes 
+    the human player, and a  humanguess method that allows the human to input their 
+    answers for the game. For the ComputerPlayer class there is an __init__ method and 
+    a mistake method that purposefully limits the correct answers provided by the 
+    computer to create a fair game. 
+    
+    The script also includes 5 functions that make the game run. 
+        - The generator function creates the category and letter that
+          the players must use when inputting answers to recieve points. 
+        - The timer function creates a 30 second time limit for inputted answers. 
+        - The point function counts the characters in each word and determines the points earned. 
+        - The scorekeeping function stores and displays the points of both players.
+        - The outcome function prints the winning result of the game. 
+"""
 import random
 import string
 import time 
@@ -28,6 +45,7 @@ class Humanplayer:
         instanciate the point() method and store the point in a list.
         
         Args:
+            humanplayer(string)- the humanplayer for the scategories game.
             word(string)- the word that the humanplayer inputs.
         
         Side Effects: print a string that contains the input.
@@ -52,10 +70,21 @@ class Computerplayer:
         self.computerplayer = computerplayer
         
     def mistake():
-    """ Create intentional mistakes for computerplayer.
+        """ Create intentional mistakes for computerplayer.
     
-    Side Effect: Print a string that contains the computerplayers guess. 
-    """
+        Side Effect: Print a string that contains the computerplayers guess. 
+        """
+        #random number generator to determine threshold of mistake level 
+        # random generator = 0, then mistake level would be 50% 
+    def computer_guesses(computerplayer,word):
+        """ Generates correct computer guesses and "wrong" 
+        guesses from the mistake() function.
+        
+        Args:
+            computerplayer (string)- the computerplayer
+            word (string)- the word that the computerplayer generates
+        """
+        #computer_Answer= input("Please enter the guessing words: ")
   
 def generator():
     """ Generate random letter and category to start game.
@@ -81,6 +110,10 @@ def timer(seconds):
     Side Effects: Timer starts when input statement is displayed.
     """
     #time.sleep(60*seconds)
+    #need something to count human and computer time, subtract that from 30 seconds 
+    #and store the subtracted times for each player as variables to be called back
+    # in the main function 
+    #humantime= 30 - 22 = 18 
 
 def point(word): 
     """ Score the word. Longer words get more points. 
@@ -117,13 +150,22 @@ def outcome(scorekeeping):
     
     Side Effects: Printing a statement to the console.
     """
-
+def main(): 
+    t= timer(humanplayer)
+    t2=
+    #somehow call the timer function 
+    if t < 30 and t > 0:
+        return (f"Human answers are: {human_guesses()}")
+        return (f"Computer answers are: {computer_guesses()}")
+    else: 
+        return (f"Human spent {humantime} for this round, answers don't count!")
+        return (f"Computer spent {computertime} for this round, answers dont count!")
+    return outcome()
 
      
-"""Not Sure
-def main():
-    if __name__ == "__main__":
-"""
+if __name__ == "__main__": 
+    #going to call main()
+
     
     
 
