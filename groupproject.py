@@ -50,10 +50,23 @@ class Humanplayer:
         
         Side Effects: print a string that contains the input.
         """
-        
         # human_answer=input("Please enter the guessing word: ")
         # if answer correct then call point method() to know how much points get
         # dict={"Color": red, white, }
+        # return human_answer
+        list1=[]
+        starttime=time.time()
+        while starttime >= 0:
+            humaninput=input("Humanplayer guesses: ")
+            list1.append(humaninput)
+            if humaninput == "quit":
+                break
+        endtime=time.time()
+        human_answer = list(human_guesses) 
+        print(f"you took {endtime-starttime} seconds to answer question.")
+        
+        
+            
          
 class Computerplayer:
     """Generate random words based on the given category and letter.
@@ -101,7 +114,7 @@ def generator():
     answer_letter=random.choice(letter_string)
     return (answer_cate, answer_letter)
 
-def timer(seconds):
+# def timer():
     """set a timer when the humanplayer inputs and checks if answer is within time range.  
     
     Args:
@@ -114,6 +127,24 @@ def timer(seconds):
     #and store the subtracted times for each player as variables to be called back
     # in the main function 
     #humantime= 30 - 22 = 18 
+    # only for humanplayer, and huamplayer timer should always in a range
+    #humanplayer.start = time.time()
+    #while human_guesses()
+    # print("hello")
+    #end = time.time()
+    #print(end - start)
+    # string.count(substring, start=..., end=...)
+    # print(end-start)
+    #startTime = time.clock() # the time human first type
+    #ellapsed = 0
+    #ellapsed = 1 - (time.clock() - startTime)
+    #time.sleep(ellapsed)
+    #startTime = time.clock()
+
+      
+
+
+    
 
 def point(word, humanplayer, computerplayer): 
     """ Score the word. Longer words get more points. 
