@@ -65,9 +65,7 @@ class Humanplayer:
         human_answer = list(human_guesses) 
         print(f"you took {endtime-starttime} seconds to answer question.")
         
-        
-            
-         
+                 
 class Computerplayer:
     """Generate random words based on the given category and letter.
     
@@ -83,11 +81,23 @@ class Computerplayer:
         """
         self.computerplayer = computerplayer
         
-    def mistake():
+    def mistake(computerplayer, words_list):
         """ Create intentional mistakes for computerplayer.
     
         Side Effect: Print a string that contains the computerplayers guess. 
         """
+        
+        with open (words_list, "r", encoding="utf-8") as f: 
+            for line in f: 
+                if not line.startswith(self.answer_cate):
+                    
+                    #append to list
+                    #add code for txt file 
+                
+                
+                
+                
+            
         #random number generator to determine threshold of mistake level 
         # random generator = 0, then mistake level would be 50% 
     def computer_guesses(computerplayer,word):
@@ -111,8 +121,10 @@ def generator():
     category_list=["Fruit","Color", "Holidays", "Animals"]
     letter_string=string.ascii_letters #"abcd...z + ABCD... Z"
     answer_cate=random.choice(category_list)
+    self.answer_cate=answer_cate
     answer_letter=random.choice(letter_string)
     return (answer_cate, answer_letter)
+#Add the category to an attribute 
 
 # def timer():
     """set a timer when the humanplayer inputs and checks if answer is within time range.  
@@ -122,6 +134,18 @@ def generator():
         
     Side Effects: Timer starts when input statement is displayed.
     """
+    
+  """  list1=[]
+starttime=time.time()
+while starttime >= 0:
+    humaninput=input("Humanplayer guesses: ")
+    list1.append(humaninput)
+    if humaninput == "quit":
+        break
+endtime=time.time()
+print (list1)
+print (endtime-starttime)"""
+
     #time.sleep(60*seconds)
     #need something to count human and computer time, subtract that from 30 seconds 
     #and store the subtracted times for each player as variables to be called back
