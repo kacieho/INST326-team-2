@@ -90,7 +90,6 @@ class Computerplayer:
         with open (words_list, "r", encoding="utf-8") as f: 
             for line in f: 
                 if not line.startswith(self.answer_cate):
-                    
                     #append to list
                     #add code for txt file 
                 
