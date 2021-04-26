@@ -39,32 +39,27 @@ class Humanplayer:
         Side Effects:humanplayer inputs their guess to the console.
         """
         self.humanplayer=humanplayer
+        self.list1= []
         
-    def humanguess(humanplayer, word):
+    def humanguess():
         """ Take an input word from humanplayer and 
         instanciate the point() method and store the point in a list.
         
-        Args:
-            humanplayer(string)- the humanplayer for the scategories game.
-            word(string)- the word that the humanplayer inputs.
         
         Side Effects: print a string that contains the input.
         """
-        # human_answer=input("Please enter the guessing word: ")
-        # if answer correct then call point method() to know how much points get
-        # dict={"Color": red, white, }
-        # return human_answer
-        list1=[]
+        
+        #Vivi 4/26: we need to print the category for the game here (call generator function)
+        #still need to figure out timer
         starttime=time.time()
         while starttime >= 0:
             humaninput=input("Humanplayer guesses: ")
-            list1.append(humaninput)
+            self.list1.append(humaninput)
             if humaninput == "quit":
                 break
         endtime=time.time()
-        human_answer = list(human_guesses) 
         print(f"you took {endtime-starttime} seconds to answer question.")
-        
+        return self.list1
                  
 class Computerplayer:
     """Generate random words based on the given category and letter.
@@ -80,34 +75,59 @@ class Computerplayer:
             Computerplayer(string)- the computerplayer.
         """
         self.computerplayer = computerplayer
+        self.wordsinput= []
         
-    def mistake(computerplayer, words_list):
-        """ Create intentional mistakes for computerplayer.
+    def computerguess(computerplayer):
+        """ Create intentional mistakes for computerplayer 
     
+        Args: 
+            computerplayer (string)- the computer player
+            
         Side Effect: Print a string that contains the computerplayers guess. 
         """
+        wrongnumchoices= random.randint(1,5)
+        rightnumchoices= random.randint(1,10)
+        if self.answer_cate == "Holidays":
+            with open ("colors.txt", "r", encoding="utf-8") as f: 
+                for line in f:
+                    while len(self.wordsinput) < wrongnumchoices:
+                        self.wordsinput.append(line)
+            with open ("holidays.txt", "r", encoding="utf-8") as f:
+                for line in f:
+                    while len(self.wordsinput) < rightnumchoices:
+                        self.wordsinput.append(line)           
+                return self.wordsinput
+        if self.answer_cate == "Colors":
+            with open("holidays.txt", "r", encoding = "utf-8") as f:
+                for line in f:
+                    while len(self.wordsinput) < wrongnumchoices:
+                        self.wordsinput.append(line)
+            with open ("colors.txt", "r", encoding="utf-8") as f: 
+                for line in f:
+                    while len(self.wordsinput) < rightnumchoices:
+                        self.wordsinput.append(line)       
+                return self.wordsinput 
+        if self.answer_cate == "Animals":
+            with open ("food.txt", "r", encoding= "utf-8") as f:
+                for line in f:
+                    while len(self.wordsinput) < wrongnumchoices:
+                        self.wordsinput.append(line)
+            with open ("animals.txt", "r", encoding= "utf-8") as f:
+                for line in f:
+                    while len(self.wordsinput) < rightnumchoices:
+                        self.wordsinput.append(line)        
+                return self.wordsinput
+        if self.answer_cate == "Food":
+            with open ("animals.txt", "r", encoding= "utf-8") as f:
+                for line in f:
+                    while len(self.wordsinput) < wrongnumchoices:
+                        self.wordsinput.append(line)
+            with open ("food.txt", "r", encoding= "utf-8") as f:
+                for line in f:
+                    while len(self.wordsinput) < rightnumchoices:
+                        self.wordsinput.append(line)        
+                return self.wordsinput
         
-        with open (words_list, "r", encoding="utf-8") as f: 
-            for line in f: 
-                if not line.startswith(self.answer_cate):
-                    #append to list
-                    #add code for txt file 
-                
-                
-                
-                
-            
-        #random number generator to determine threshold of mistake level 
-        # random generator = 0, then mistake level would be 50% 
-    def computer_guesses(computerplayer,word):
-        """ Generates correct computer guesses and "wrong" 
-        guesses from the mistake() function.
-        
-        Args:
-            computerplayer (string)- the computerplayer
-            word (string)- the word that the computerplayer generates
-        """
-        #computer_Answer= input("Please enter the guessing words: ")
   
 def generator():
     """ Generate random letter and category to start game.
@@ -118,56 +138,10 @@ def generator():
             answer_cate and answer_letter.
     """
     category_list=["Fruit","Color", "Holidays", "Animals"]
-    letter_string=string.ascii_letters #"abcd...z + ABCD... Z"
     answer_cate=random.choice(category_list)
     self.answer_cate=answer_cate
-    answer_letter=random.choice(letter_string)
-    return (answer_cate, answer_letter)
-#Add the category to an attribute 
-
-# def timer():
-    """set a timer when the humanplayer inputs and checks if answer is within time range.  
-    
-    Args:
-        Seconds(integer)- The amount of time allowed.
-        
-    Side Effects: Timer starts when input statement is displayed.
-    """
-    
-  """  list1=[]
-starttime=time.time()
-while starttime >= 0:
-    humaninput=input("Humanplayer guesses: ")
-    list1.append(humaninput)
-    if humaninput == "quit":
-        break
-endtime=time.time()
-print (list1)
-print (endtime-starttime)"""
-
-    #time.sleep(60*seconds)
-    #need something to count human and computer time, subtract that from 30 seconds 
-    #and store the subtracted times for each player as variables to be called back
-    # in the main function 
-    #humantime= 30 - 22 = 18 
-    # only for humanplayer, and huamplayer timer should always in a range
-    #humanplayer.start = time.time()
-    #while human_guesses()
-    # print("hello")
-    #end = time.time()
-    #print(end - start)
-    # string.count(substring, start=..., end=...)
-    # print(end-start)
-    #startTime = time.clock() # the time human first type
-    #ellapsed = 0
-    #ellapsed = 1 - (time.clock() - startTime)
-    #time.sleep(ellapsed)
-    #startTime = time.clock()
-
-      
-
-
-    
+    return (answer_cate)
+ 
 
 def point(word, humanplayer, computerplayer): 
     """ Score the word. Longer words get more points. 
@@ -177,8 +151,8 @@ def point(word, humanplayer, computerplayer):
     Returns:
         point(integer)- The points player gains ranges from 2-15.
     """
-    human_answer = list(human_guesses) 
-    computer_anwser = list(computer_guesses) 
+    human_answer = Humanplayer("humanplayer").human_guesses().list1
+    computer_anwser = Computerplayer("computerplayer").mistake().wordsinput
     for word in human_answer: 
         length=len(word)
         for i in range(16): 
@@ -236,18 +210,16 @@ def main():
     Returns:
         string: multiple sentences outputted for game results
     """
-    print(f"The category: {generator[0]}  The letter: {generator[1]} ")
+    print(f"The category: {generator[0]}")
 
-    t= timer(humanplayer)
-    #somehow call the timer function 
     if t < 30 and t > 0:
-        return (f"Human answers are: {human_guesses()}")
-        return (f"Computer answers are: {computer_guesses()}")
+        print (f"Human answers are: {Humanplayer('humanplayer').humanguess()}")
+        print (f"Computer answers are: {Computerplayer('computerplayer').computerguess()}")
     else: 
-        return (f"Human spent {humantime} for this round, answers don't count!")
-        return (f"Computer spent {computertime} for this round, answers dont count!")
+        print (f"Human spent {humantime} for this round, answers don't count!")
+        print (f"Computer spent {computertime} for this round, answers dont count!")
     return outcome()
 
      
-if __name__ == "__main__": 
+#if __name__ == "__main__": 
     #going to call main()
