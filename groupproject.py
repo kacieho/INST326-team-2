@@ -51,16 +51,15 @@ class Humanplayer:
         
         #Vivi 4/26: we need to print the category for the game here (call generator function)
         #still need to figure out timer
-        starttime=time.time()
-        while starttime >= 0:
-            humaninput=input("Humanplayer guesses: ")
+        starttime=time.time()            
+        future = starttime + 10
+        while starttime < future:
+            humaninput=input(f"{self.answer_cate} category- Humanplayer guesses: ")
             self.list1.append(humaninput)
-            if humaninput == "quit":
-                break
-        endtime=time.time()
-        print(f"you took {endtime-starttime} seconds to answer question.")
+            print(future-starttime)
         return self.list1
-                 
+        #print(f"you took {future-starttime} seconds to answer question.")
+  
 class Computerplayer:
     """Generate random words based on the given category and letter.
     
@@ -197,11 +196,11 @@ def outcome(scorekeeping):
     p1 = scorekeeping(humanscore)
     p2 = scorekeeping(compscore)
     if p1 > p2:
-        return (f"Human Player won by {p1 - p2}!")
+        print (f"Human Player won by {p1 - p2}!")
     elif p1 < p2:
-        return (f"Computer Player won by {p2 - p1}!")
+        print(f"Computer Player won by {p2 - p1}!")
     elif p1 == p2:
-        return (f"Computer Player and Human Player tied with {p1}!")
+        print(f"Computer Player and Human Player tied with {p1}!")
     
 def main(): 
     """Runs the entire game, by printing out category and letter topics, computer 
@@ -212,12 +211,8 @@ def main():
     """
     print(f"The category: {generator[0]}")
 
-    if t < 30 and t > 0:
-        print (f"Human answers are: {Humanplayer('humanplayer').humanguess()}")
-        print (f"Computer answers are: {Computerplayer('computerplayer').computerguess()}")
-    else: 
-        print (f"Human spent {humantime} for this round, answers don't count!")
-        print (f"Computer spent {computertime} for this round, answers dont count!")
+    print (f"Human answers are: {Humanplayer('humanplayer').humanguess()}")
+    print (f"Computer answers are: {Computerplayer('computerplayer').computerguess()}")
     return outcome()
 
      
