@@ -59,74 +59,74 @@ class Humanplayer:
             self.list1.append(humaninput)
         return self.list1
   
-class Computerplayer:
-    """Generate random words based on the given category.
+#class Computerplayer:
+    #"""Generate random words based on the given category.
     
-    Attributes: 
-        computerplayer(string)- the computerplayer.
-    """
+    #Attributes: 
+        #computerplayer(string)- the computerplayer.
+    #"""
     
-    def __init__(self, computerplayer):
-        """initialize computerplayer
+    #def __init__(self, computerplayer):
+        #"""initialize computerplayer
         
-        Args: 
-            Computerplayer(string)- the computerplayer.
-        """
-        self.computerplayer = computerplayer
-        self.wordsinput= []
+        #Args: 
+            #Computerplayer(string)- the computerplayer.
+        #"""
+        #self.computerplayer = computerplayer
+        #self.wordsinput= []
         
-    def computerguess(self,answer_cate):
-        """ Allow computer to answer both correctly and incorrectly by accessing
-        different txt files of each category. 
+    #def computerguess(self,answer_cate):
+        #""" Allow computer to answer both correctly and incorrectly by accessing
+        #different txt files of each category. 
     
-        Args: 
-            answer_cate (str)- the catgeory of the game provided
-            from the generator function
+        #Args: 
+            #answer_cate (str)- the catgeory of the game provided
+            #from the generator function
             
-        Side Effect: returns a list that contains the computerplayers guess. 
-        """
-        wrongnumchoices= random.randint(1,5)
-        rightnumchoices= random.randint(1,10)
-        if answer_cate == "Holidays":
-            with open ("color.txt", "r", encoding="utf-8") as f: 
-                for line in f:
-                    while len(self.wordsinput) < wrongnumchoices:
-                        self.wordsinput.append(line)
-            with open ("holidays.txt", "r", encoding="utf-8") as f:
-                for line in f:
-                    while len(self.wordsinput) < rightnumchoices:
-                        self.wordsinput.append(line)           
-                return self.wordsinput
-        if answer_cate == "Colors":
-            with open("holidays.txt", "r", encoding = "utf-8") as f:
-                for line in f:
-                    while len(self.wordsinput) < wrongnumchoices:
-                        self.wordsinput.append(line)
-            with open ("color.txt", "r", encoding="utf-8") as f: 
-                for line in f:
-                    while len(self.wordsinput) < rightnumchoices:
-                        self.wordsinput.append(line)       
-                return self.wordsinput 
-        if answer_cate == "Animals":
-            with open ("foods.txt", "r", encoding= "utf-8") as f:
-                for line in f:
-                    while len(self.wordsinput) < wrongnumchoices:
-                        self.wordsinput.append(line)
-            with open ("animals.txt", "r", encoding= "utf-8") as f:
-                for line in f:
-                    while len(self.wordsinput) < rightnumchoices:
-                        self.wordsinput.append(line)        
-                return self.wordsinput
-        if answer_cate == "Food":
-            with open ("animals.txt", "r", encoding= "utf-8") as f:
-                for line in f:
-                    while len(self.wordsinput) < wrongnumchoices:
-                        self.wordsinput.append(line)
-            with open ("foods.txt", "r", encoding= "utf-8") as f:
-                for line in f:
-                    while len(self.wordsinput) < rightnumchoices:
-                        self.wordsinput.append(line)        
-                return self.wordsinput
+        #Side Effect: returns a list that contains the computerplayers guess. 
+        #"""
+        #wrongnumchoices= random.randint(1,5)
+        #rightnumchoices= random.randint(1,10)
+        #if answer_cate == "Holidays":
+            #with open ("color.txt", "r", encoding="utf-8") as f: 
+                #for line in f:
+                    #while len(self.wordsinput) < wrongnumchoices:
+                        #self.wordsinput.append(line)
+            #with open ("holidays.txt", "r", encoding="utf-8") as f:
+                #for line in f:
+                    #while len(self.wordsinput) < rightnumchoices:
+                        #self.wordsinput.append(line)           
+                #return self.wordsinput
+        #if answer_cate == "Colors":
+            #with open("holidays.txt", "r", encoding = "utf-8") as f:
+                #for line in f:
+                    #while len(self.wordsinput) < wrongnumchoices:
+                        #self.wordsinput.append(line)
+            #with open ("color.txt", "r", encoding="utf-8") as f: 
+                #for line in f:
+                    #while len(self.wordsinput) < rightnumchoices:
+                        #self.wordsinput.append(line)       
+                #return self.wordsinput 
+        #if answer_cate == "Animals":
+            #with open ("foods.txt", "r", encoding= "utf-8") as f:
+                #for line in f:
+                    #while len(self.wordsinput) < wrongnumchoices:
+                        #self.wordsinput.append(line)
+            #with open ("animals.txt", "r", encoding= "utf-8") as f:
+                #for line in f:
+                    #while len(self.wordsinput) < rightnumchoices:
+                        #self.wordsinput.append(line)        
+                #return self.wordsinput
+        #if answer_cate == "Food":
+            #with open ("animals.txt", "r", encoding= "utf-8") as f:
+                #for line in f:
+                    #while len(self.wordsinput) < wrongnumchoices:
+                        #self.wordsinput.append(line)
+            #with open ("foods.txt", "r", encoding= "utf-8") as f:
+                #for line in f:
+                    #while len(self.wordsinput) < rightnumchoices:
+                        #self.wordsinput.append(line)        
+                #return self.wordsinput
         
   
 def generator():
@@ -135,7 +135,7 @@ def generator():
     Return: 
         answer_cate (str): the category of the game
     """
-    category_list=["Fruit","Color", "Holidays", "Animals"]
+    category_list=["Food","Color", "Holidays", "Animals"]
     answer_cate=random.choice(category_list)
     return (answer_cate)
  
@@ -153,18 +153,19 @@ def point(humanplayer, computerplayer):
         cpoint(int)- The point computerplayer gains, ranging from 2-15.
     """
     human_answer = Humanplayer(humanplayer).humanguess()
-    computer_anwser = Computerplayer(computerplayer).mistake().wordsinput
+    #computer_anwser = Computerplayer(computerplayer).mistake().wordsinput
     for word in human_answer: 
         length=len(word)
         for i in range(16): 
             if i==length:
                 hpoint=i
-    for words in computer_answer:
-        length=len(word)
-        for i in range(16): 
-            if i==length:
-                cpoint=i
-    return hpoint,cpoint
+    #for words in computer_answer:
+        #length=len(word)
+        #for i in range(16): 
+            #if i==length:
+                #cpoint=i
+    #return hpoint,cpoint
+    return hpoint
         
 def scorekeeping(hpoint, cpoint):
     """ 
@@ -178,9 +179,9 @@ def scorekeeping(hpoint, cpoint):
     Side Effects: prints the current points for each player 
     """
     print(f"Current Human Score: {hpoint}")
-    print(f"Current Computer Score: {cpoint}")
+    #print(f"Current Computer Score: {cpoint}")
         
-def outcome(humanscore,compscore):
+#def outcome(humanscore,compscore):
     """ prints the final winning statement by how many points.
      
     Args: 
@@ -189,12 +190,12 @@ def outcome(humanscore,compscore):
     
     Side Effects: Printing a winning statement to the console.
     """
-    if humanscore > compscore:
-        print (f"Human Player won by {humanscore- compscore}!")
-    elif humanscore < compscore:
-        print(f"Computer Player won by {compscore - humanscore}!")
-    elif humanscore == compscore:
-        print(f"Computer Player and Human Player tied with {humanscore}!")
+    #if humanscore > compscore:
+        #print (f"Human Player won by {humanscore- compscore}!")
+    #elif humanscore < compscore:
+        #print(f"Computer Player won by {compscore - humanscore}!")
+    #elif humanscore == compscore:
+        #print(f"Computer Player and Human Player tied with {humanscore}!")
     
 def main(): 
     """Runs the entire game, by printing out category topics, computer 
@@ -206,12 +207,12 @@ def main():
     answer_cate = generator()
     print(f"The category: {answer_cate}") 
     hguess=(Humanplayer('humanplayer'))
-    h2guess= (Computerplayer('computerplayer'))
+    #h2guess= (Computerplayer('computerplayer'))
     print(f"(Humans answers are:{hguess.humanguess(answer_cate)}")
-    print (f"(Computer answers are:{h2guess.computerguess(answer_cate)}")
-    hpoint,cpoint= point(hguess,h2guess)
-    scorekeeping(hpoint,cpoint)
-    outcome(hpoint,cpoint)
+    #print (f"(Computer answers are:{h2guess.computerguess(answer_cate)}")
+    #hpoint,cpoint= point(hguess,h2guess)
+    #scorekeeping(hpoint,cpoint)
+    #outcome(hpoint,cpoint)
 
      
 if __name__ == "__main__": 
