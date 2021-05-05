@@ -135,7 +135,7 @@ def generator():
     Return: 
         answer_cate (str): the category of the game
     """
-    category_list=["Fruit","Color", "Holidays", "Animals"]
+    category_list=["Food","Color", "Holidays", "Animals"]
     answer_cate=random.choice(category_list)
     return (answer_cate)
  
