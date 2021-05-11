@@ -112,9 +112,9 @@ class Computerplayer:
                 return a string: category's name (lowercase) + .txt
             """
             return (cate.lower()+".txt")      
-        wrongnumchoices= random.randint(1,5) 
+        wrongnumchoices= random.randint(1,3) 
         rightnumchoices= random.randint(1,3)
-        self.readwords(rightnumchoices, catefile(answer_cate))
+        correct= self.readwords(rightnumchoices, catefile(answer_cate))
         category_set={"Foods","Color", "Holidays", "Animals"}
         category_set.remove(answer_cate)
         self.readwords(wrongnumchoices, catefile(category_set.pop()))
@@ -148,12 +148,24 @@ def point(answer_cate,humanplayer, computerplayer):
     hpoint = 0
     cpoint = 0
     for word in humanplayer.list1: 
-        length=len(word)
-        hpoint += length
-    for words in computerplayer.wordsinput:
-        length=len(word)
-        cpoint += length
+        #print(word)
+        human_length=len(word)
+        hpoint += human_length
+        #print(human_length)
+    #for words in computerplayer.wordsinput:
+    for words in computerguess.catefile(correct):
+        #if word in :
+            #category 
+        #print(words)
+        comp_length=len(words)
+        cpoint += comp_length
+        print(comp_length)
     return hpoint,cpoint
+
+#def adjusted_computerscore(cpoint):
+    #list_3=[]
+    #catefile(wordsinput)
+    
 
         
 def scorekeeping(hpoint, cpoint):
