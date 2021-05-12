@@ -20,7 +20,11 @@ def test_humanguess():
     assert  humanguess("Animals")=="zebra"
          
 #Computerplayer
-def ()
+def test_catefile():
+    assert catefile("Foods") == "foods.txt"
+    assert catefile("Holidays") == "holidays.txt"
+    assert catefile("Color") == "color.txt"
+    assert catefile("Animals") == "animals.txt"
 
 
 def test_point():
