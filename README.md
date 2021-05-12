@@ -26,3 +26,4 @@ For the HumanPlayer class there is an `__init__` method, that initializes the hu
 As stated above, our program is used through the command line where a humanplayer (the user) will battle the computer by inputting as many words (longer words as well) in accordance to a generated category to gain more points against the computer. The output of our program shows the process of the game, and the user can intepret how many points they have lost or won by.
 
 ### An annotated bibliography of all sources you used to develop your project. For each source, explain how you used the source.
+We did not use or extract information from external sources in the production of our program. We depended on TA's, the professor, as well as our notes to produce a well-working project. 
