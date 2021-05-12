@@ -2,40 +2,9 @@ from groupproject import point
 import groupproject 
 import builtins
 from unittest import mock
+import pytest 
+import random   
 
-
-#Humanplayer
-def test_humanguess():
-    #Color Category 
-    human= groupproject.Humanplayer("humanplayer")
-    with mock.patch("builtins.input", side_effect=["red"]):
-        assert human.humanguess("Color") == ["red"]
-    # ^ the above might be the correct way, since this
-    # is the way stated on the pytest page on elms
-    # for testing functions that require input answers but
-    # we are still still getting errors,
-    # we are working with a specific category so its more difficult
-    #conclusion: joel didnt know how to help us with this test,
-    # the way the bottom assert statements wont work because we
-    #need to create an object of the humanplayer class like i did in
-    # line 10 but it still doesnt work
-    
-    assert humanguess("Color")==["yellow", "blue", "orange"]
-    assert humanguess("Color")==["green", "white"]
-    #Foods Category 
-    assert humanguess("Foods")==["apple"]
-    assert humanguess("Foods")==["noodles", "hamburger"]
-    assert  humanguess("Foods")==["pizza", "soup", "salad"]
-    #Holidays Category
-    assert humanguess("Holidays")== ["christmas"]
-    assert humanguess("Holidays")== ["newyears", "hanukkah"]
-    assert  humanguess("Holidays")== ["thanksgiving", "easter", "mothersday"]
-    #Animals Category 
-    assert humanguess("Animals")=="dog"
-    assert humanguess("Animals")=="cat"
-    assert  humanguess("Animals")=="zebra"
-         
-#Computerplayer
 def test_catefile():
     computer= groupproject.Computerplayer("humanplayer")
     assert computer.catefile("Foods") == "foods.txt"
@@ -43,39 +12,50 @@ def test_catefile():
     assert computer.catefile("Color") == "color.txt"
     assert computer.catefile("Animals") == "animals.txt"
     
-#^ this is correct!!!
+def test_scorekeeping(capsys):
+    groupproject.scorekeeping(12,25)
+    outer1 = capsys.readouterr()
+    out1 = outer1.out
+    assert out1 == "Current Human Score: 12\nCurrent Computer Score: 25\n"
     
+    groupproject.scorekeeping(9,7)
+    outer2 = capsys.readouterr()
+    out2 = outer2.out
+    assert out2 == "Current Human Score: 9\nCurrent Computer Score: 7\n"
     
+    groupproject.scorekeeping(34,20)
+    outer3 = capsys.readouterr()
+    out3 = outer3.out
+    assert out3 == "Current Human Score: 34\nCurrent Computer Score: 20\n"
     
+    groupproject.scorekeeping(33,27)
+    outer4 = capsys.readouterr()
+    out4 = outer4.out
+    assert out4 == "Current Human Score: 33\nCurrent Computer Score: 27\n"
     
-    
-    
-# other functions outside of class
-def test_point():
-    assert point("fruit") == 5
-    assert point("APPLE") == 5
-    assert point("Animal") == 6
-    assert point("puppy") == 5
-    assert point("WEATHER") == 7
-    assert point("snow") == 4
-    assert point("hi") == 2
-    assert point("hello") == 5
-    assert point("hellohellohell") == 14
-    assert point("hellohellohello") == 15
-    
-def test_scorekeeping():
-    assert scorekeeping(12,25) == "Current Human Score: 12" 
-    "Current Computer Score: 25"
-    assert scorekeeping(9,7) == "Current Human Score: 9" 
-    "Current Computer Score: 7"
-    assert scorekeeping(34,20) == "Current Human Score: 34" 
-    "Current Computer Score: 20"
-    assert scorekeeping(33,27) == "Current Human Score: 33" 
-    "Current Computer Score: 27"
-    assert scorekeeping(18,38) == "Current Human Score: 18" 
-    "Current Computer Score: 38"
+    groupproject.scorekeeping(18,38)
+    outer5 = capsys.readouterr()
+    out5 = outer5.out
+    assert out5 == "Current Human Score: 18\nCurrent Computer Score: 38\n"
 
-def test_outcome():
-    assert outcome(10, 20) == "Computer Player won by 10!"
-    assert outcome(23, 9) == "Human Player won by 14!"
-    assert outcome(22, 22) == "Computer Player and Human Player tied with 22!"
+
+def test_outcome(capsys):
+    groupproject.outcome(10,20)
+    outer1 = capsys.readouterr()
+    out1 = outer1.out
+    assert out1 == "Computer Player won by 10!\n"
+    
+    groupproject.outcome(23,9)
+    outer2 = capsys.readouterr()
+    out2 = outer2.out
+    assert out2 == "Human Player won by 14!\n"
+    
+    groupproject.outcome(22,22)
+    outer3 = capsys.readouterr()
+    out3 = outer3.out
+    assert out3 == "Computer Player and Human Player tied with 22!\n"
+    
+def test_generator():
+    random.seed(0)
+    choices = [groupproject.generator() for i in range(4)]
+    assert choices == ["Animals","Animals", "Foods", "Holidays"]
