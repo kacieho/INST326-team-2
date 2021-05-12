@@ -6,6 +6,7 @@ import pytest
 import random   
 
 def test_catefile():
+    """Does Computerplayer.catefile() return the correct txt file? """
     computer= groupproject.Computerplayer("humanplayer")
     assert computer.catefile("Foods") == "foods.txt"
     assert computer.catefile("Holidays") == "holidays.txt"
@@ -13,6 +14,7 @@ def test_catefile():
     assert computer.catefile("Animals") == "animals.txt"
     
 def test_scorekeeping(capsys):
+    """Does scorekeeping() print the correct current scores of both players?"""
     groupproject.scorekeeping(12,25)
     outer1 = capsys.readouterr()
     out1 = outer1.out
@@ -40,6 +42,8 @@ def test_scorekeeping(capsys):
 
 
 def test_outcome(capsys):
+    """ Does outcome() print the correct winner of the game by the point
+    difference between the two players? """
     groupproject.outcome(10,20)
     outer1 = capsys.readouterr()
     out1 = outer1.out
@@ -56,6 +60,7 @@ def test_outcome(capsys):
     assert out3 == "Computer Player and Human Player tied with 22!\n"
     
 def test_generator():
+    """ Does generator() return one of the categories in the list?"""
     random.seed(0)
     choices = [groupproject.generator() for i in range(4)]
     assert choices == ["Animals","Animals", "Foods", "Holidays"]
