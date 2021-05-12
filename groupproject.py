@@ -177,8 +177,7 @@ def point(answer_cate,humanplayer, computerplayer):
    
         
 def scorekeeping(hpoint, cpoint):
-    """ 
-    This function calls hpoint and cpoint from the point() function, and
+    """ This function calls hpoint and cpoint from the point() function, and
     prints out a current score of the game.
     
     Args: 
@@ -187,8 +186,7 @@ def scorekeeping(hpoint, cpoint):
     
     Side Effects: prints the current points for each player 
     """
-    print(f"Current Human Score: {hpoint}")
-    print(f"Current Computer Score: {cpoint}")
+    print(f"Current Human Score: {str(hpoint)}\nCurrent Computer Score: {str(cpoint)}")
         
 def outcome(humanscore,compscore):
     """ prints the final winning statement by how many points.
