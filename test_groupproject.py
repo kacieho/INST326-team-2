@@ -1,4 +1,27 @@
 from groupproject import point
+import groupproject 
+#Humanplayer
+def test_humanguess():
+    #Color Category 
+    assert humanguess("Color")== "red"
+    assert humanguess("Color")=="yellow"
+    assert humanguess("Color")=="green"
+    #Foods Category 
+    assert humanguess("Foods")=="apple"
+    assert humanguess("Foods")=="noodles"
+    assert  humanguess("Foods")=="pizza"
+    #Holidays Category
+    assert humanguess("Holidays")=="christmas"
+    assert humanguess("Holidays")=="newyears"
+    assert  humanguess("Holidays")=="thanksgiving"
+    #Animals Category 
+    assert humanguess("Animals")=="dog"
+    assert humanguess("Animals")=="cat"
+    assert  humanguess("Animals")=="zebra"
+         
+#Computerplayer
+def ()
+
 
 def test_point():
     assert point("fruit") == 5
