@@ -166,7 +166,6 @@ def point(answer_cate,humanplayer, computerplayer):
     #list_3=[]
     #catefile(wordsinput)
     
-
         
 def scorekeeping(hpoint, cpoint):
     """ 
