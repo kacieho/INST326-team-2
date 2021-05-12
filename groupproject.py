@@ -93,7 +93,16 @@ class Computerplayer:
             list2=f.readline().strip().split('\t')
         self.wordsinput.extend(random.sample(list2, numwords))
           
-        
+    def catefile(self,cate):
+            """Category file
+            
+            Args:
+                cate(str): cateory name
+                
+            Returns:
+                return a string: category's name (lowercase) + .txt
+            """
+            return cate.lower()+".txt"    
     def computerguess(self,answer_cate):
         """ Allow computer to answer both correctly and incorrectly by accessing
         the correct txt file for the category, as well as an incorrect txt file. 
@@ -106,23 +115,15 @@ class Computerplayer:
         
         Returns: 
             wordsinput: returns wordsinput that contains the computerplayers guesses. 
-        """
-        def catefile(cate):
-            """Category file
-            
-            Args:
-                cate(str): cateory name
-                
-            Returns:
-                return a string: category's name (lowercase) + .txt
-            """
-            return cate.lower()+".txt"      
+        """   
         wrongnumchoices= random.randint(1,3) 
         rightnumchoices= random.randint(1,3)
-        correct= self.readwords(rightnumchoices, catefile(answer_cate))
+        cate= self.catefile(answer_cate)
+        correct= self.readwords(rightnumchoices, cate)
         category_set={"Foods","Color", "Holidays", "Animals"}
         category_set.remove(answer_cate)
-        self.readwords(wrongnumchoices, catefile(category_set.pop()))
+        cate2=self.catefile(category_set.pop())
+        self.readwords(wrongnumchoices, cate2)
         return self.wordsinput
         
   
