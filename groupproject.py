@@ -8,9 +8,10 @@ Topic: Scattergories
     The script creates 2 classes for each player (human and computer) and intializes 
     both players. For the HumanPlayer class there is an __init__ method, that initializes 
     the human player, and a  humanguess method that allows the human to input their 
-    answers for the game. For the ComputerPlayer class there is an __init__ method and 
-    a computerguess method that purposefully limits the correct answers provided by the 
-    computer to create a fair game. 
+    answers for the game. For the ComputerPlayer class there is an __init__ method, a readwords method 
+    that reads in the text file and inputs a random list of words for the computer answer.
+    The computerplayer class also has a computerguess method that purposefully 
+    limits the correct answers provided by the computer to create a fair game. 
     
     The script also includes 5 functions that make the game run. 
         - The generator function creates the category that
@@ -20,22 +21,21 @@ Topic: Scattergories
         - The outcome function prints the winning result of the game. 
 """
 import random
-import string
 import time 
 
 class Humanplayer:
     """ User input words based on categories.
     
     Attributes: 
-        HumanPlayer(string)- the humanplayer for the scategories game.
+        HumanPlayer(str)- the humanplayer for the scategories game.
     """
     def __init__(self, humanplayer):
         """initialize humanplayer
         
         Args: 
-            HumanPlayer(string)-the humanplayer for the scategories game.
+            HumanPlayer(object)-the humanplayer for the scategories game.
         
-        Side Effects:humanplayer inputs their guess to the console.
+        Side Effects: Sets attribute list1
         """
         self.humanplayer=humanplayer
         self.list1= []
@@ -50,7 +50,8 @@ class Humanplayer:
             from the generator function
         
         Side Effects: modified the self.list1
-        Returns: return the list that contains the input.
+        Returns: 
+            list1: return the list that contains the input.
         """
         starttime=time.time()     
         future = starttime + 10    
@@ -64,26 +65,29 @@ class Computerplayer:
     """Generate random words based on the given category.
     
     Attributes: 
-        #computerplayer(string)- the computerplayer.
+        computerplayer(object)- the computerplayer.
+        wordsinput (list)- the list of words outputted by the computerplayer
     """
     
     def __init__(self, computerplayer):
         """initialize computerplayer
         
         Args: 
-            Computerplayer(string)- the computerplayer.
+            Computerplayer(object)- the computerplayer.
+        Side effect: Sets an attribute wordsinput
         """
         self.computerplayer = computerplayer
         self.wordsinput= []
         
     def readwords(self, numwords, filepath):
-        """Read words in the text fiel
+        """Read words and cleans words in the text file, as well as inputting
+        words into wordsinput.
         
         Args:
-            numwords(int):
-            filepath(string):
+            numwords(int): the number of words to be extended to wordsinput
+            filepath(str): the name of the .txt files
             
-        Side Effects: 
+        Side Effects: Modifying wordsinput
         """
         with open (filepath, "r", encoding="utf-8") as f:
             list2=f.readline().strip().split('\t')
@@ -92,26 +96,27 @@ class Computerplayer:
         
     def computerguess(self,answer_cate):
         """ Allow computer to answer both correctly and incorrectly by accessing
-        different txt files of each category. 
+        the correct txt file for the category, as well as an incorrect txt file. 
     
         Args: 
             answer_cate (str)- the catgeory of the game provided
             from the generator function
             
-        Side Effect:  modified the list
+        Side Effect: modifies wordsinput
         
-        Returns: returns a list that contains the computerplayers guess. 
+        Returns: 
+            wordsinput: returns wordsinput that contains the computerplayers guesses. 
         """
         def catefile(cate):
             """Category file
             
             Args:
-                cate(string): catagory string
+                cate(str): cateory name
                 
             Returns:
                 return a string: category's name (lowercase) + .txt
             """
-            return (cate.lower()+".txt")      
+            return cate.lower()+".txt"      
         wrongnumchoices= random.randint(1,3) 
         rightnumchoices= random.randint(1,3)
         correct= self.readwords(rightnumchoices, catefile(answer_cate))
@@ -122,50 +127,53 @@ class Computerplayer:
         
   
 def generator():
-    """ Generate random category to start game.
+    """ Generate random category to start game out of the provided list
+    of categories.
         
     Return: 
         answer_cate (str): the category of the game
     """
     category_list=["Foods","Color", "Holidays", "Animals"]
     answer_cate=random.choice(category_list)
-    return (answer_cate)
+    return answer_cate
  
 
 def point(answer_cate,humanplayer, computerplayer): 
-    # we added answer_cate as a parameter here TA:Miguel
-    """ Score the word. Longer words get more points. 
+    """ Scores each word in the list of answers, longer words and more words
+    get more points. 
     Args:
-        humanplayer (str): the human player of the game, object of 
+        answer_cate(str): the name of the category
+        humanplayer (object): the human player of the game, object of 
         humanplayer class
-        computerplayer (str): the computer player of the game, object of 
+        computerplayer (object): the computer player of the game, object of 
         computerplayer class
         
     Returns:
-        hpoint(int)- The points humanplayer gains ranging from 2-15.
-        cpoint(int)- The point computerplayer gains, ranging from 2-15.
+        hpoint(int)- The points humanplayer gains
+        cpoint(int)- The point computerplayer gains
     """
+    if answer_cate=="Foods":
+        pathfile='foods.txt'
+    if answer_cate=="Color":
+        pathfile='color.txt'
+    if answer_cate=="Holidays":
+        pathfile='holidays.txt'
+    if answer_cate=="Animals":
+        pathfile='animals.txt'
+    with open (pathfile, 'r', encoding="utf-8") as f:
+        correct_answer_list=f.readline().strip().split('\t')
+        
     hpoint = 0
     cpoint = 0
     for word in humanplayer.list1: 
-        #print(word)
         human_length=len(word)
-        hpoint += human_length
-        #print(human_length)
-    #for words in computerplayer.wordsinput:
-    for words in computerguess.catefile(correct):
-        #if word in :
-            #category 
-        #print(words)
-        comp_length=len(words)
-        cpoint += comp_length
-        print(comp_length)
+        hpoint += human_length        
+    for word in computerplayer.wordsinput:
+        if word in correct_answer_list:
+            comp_length=len(word)
+            cpoint += comp_length
     return hpoint,cpoint
-
-#def adjusted_computerscore(cpoint):
-    #list_3=[]
-    #catefile(wordsinput)
-    
+   
         
 def scorekeeping(hpoint, cpoint):
     """ 
@@ -173,8 +181,8 @@ def scorekeeping(hpoint, cpoint):
     prints out a current score of the game.
     
     Args: 
-        hpoint(int)- The points humanplayer gains ranging from 2-15.
-        cpoint(int)- The point computerplayer gains, ranging from 2-15.
+        hpoint(int)- The points humanplayer gains
+        cpoint(int)- The point computerplayer gains
     
     Side Effects: prints the current points for each player 
     """
@@ -186,7 +194,7 @@ def outcome(humanscore,compscore):
      
     Args: 
         humanscore (int): the total humanplayer score
-        computerscore (int): the total computerplayer score
+        compscore (int): the total computerplayer score
     
     Side Effects: Printing a winning statement to the console.
     """
