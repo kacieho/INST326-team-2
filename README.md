@@ -6,7 +6,13 @@ Scattergories is a game where a random category is selected and players type as 
 For the HumanPlayer class there is an `__init__` method, that initializes the human player, and a  humanguess method that allows the human to input their answers for the game. For the ComputerPlayer class there is an `__init__` method, a readwords method that reads in the text file and inputs a random list of words for the computer answer. The computerplayer class also has a computerguess method that purposefully limits the correct answers provided by the computer to create a fair game. 
 
 ### Purpose of each file in repository:
-
+1. README.md: Introduce the program to audiences
+2. animals.txt: a textfile contians many words that belong to "Animals" category
+3. color.txt: a textfile contians many words that belong to "Color" category
+4. foods.txt: a textfile contians many words that belong to "Foods" category
+5. holidays.txt: a textfile contians many words that belong to "Holidays" category
+6. groupproject.py: program code script
+7. test_groupproject.py: pytest file that tests methods in groupproject.py
 
 ### Instructions from Command Line: 
 1. Open command from integrated terminal of the groupproject.py file
