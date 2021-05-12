@@ -7,22 +7,22 @@ For the HumanPlayer class there is an `__init__` method, that initializes the hu
 
 ### Purpose of each file in repository:
 1. README.md: Introduce the program to audiences
-2. animals.txt: a textfile contians many words that belong to "Animals" category
-3. color.txt: a textfile contians many words that belong to "Color" category
-4. foods.txt: a textfile contians many words that belong to "Foods" category
-5. holidays.txt: a textfile contians many words that belong to "Holidays" category
+2. animals.txt: a textfile that contains many words that belong to "Animals" category
+3. color.txt: a textfile that contains many words that belong to "Color" category
+4. foods.txt: a textfile that contains many words that belong to "Foods" category
+5. holidays.txt: a textfile that contains many words that belong to "Holidays" category
 6. groupproject.py: program code script
 7. test_groupproject.py: pytest file that tests methods in groupproject.py
 
 ### Instructions from Command Line: 
 1. Open command from integrated terminal of the groupproject.py file
 2. Type `python3 groupproject.py` in the terminal. 
-3. Terminal will output 1 of 4 categories and user can start typing words in the terminal. For example, `Holidays category- Humanplayer guesses:` users can start typing once the statement shows up. 
+3. Terminal will output 1 of 4 categories and user can start typing words in the terminal based on that category. For example, `Holidays category- Humanplayer guesses:` users can start typing words that relate to 'Holidays' once the statement shows up. 
 4. Terminal will automatically display the list of words the user typed in.
-5. When timer stops, computer player answers, scores of both players, and the winner would be displayed. 
+5. When the timer stops, the human and computer player answers will be outputted as a list.
+6. Then the current scores of both players along with the final game outcome will be outputted automatically. 
 
 ### how to use your program and/or interpret the output of the program, as applicable
-
+As stated above, our program is used through the command line where a humanplayer (the user) will battle the computer by inputting as many words (longer words as well) in accordance to a generated category to gain more points against the computer. The output of our program shows the process of the game, and the user can intepret how many points they have lost or won by.
 
 ### An annotated bibliography of all sources you used to develop your project. For each source, explain how you used the source.
-- timer
