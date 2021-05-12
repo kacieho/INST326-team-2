@@ -1,1 +1,0 @@
-zebra	dog	cat	lion 	fox 	elephant 	giraffe 	deer 	horse 	hippo 	ostrich 	parrot	fish 	birds 	turtle 	frog 	duck 	chicken 	cow 	pig 	goat	lemur 	alligator 	iguana	Alpaca 	jellyfish	koala	monkey	octopus 	roaches	snake	vulture	quail	wallaby	urchin	viperfish	yellowtail fish	xray fish	whales
